@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Integrated Quiz App</title>
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>AI Integrated Quiz App</h1>
+    </header>
+    <main>
+        <div id="question-div">
+            <span id="question"></span>
+            <textarea id="myTextArea" rows="4" cols="50" placeholder="Enter your answer..."></textarea>
+            <div id="button-container">
+                <button id="previous">Previous</button>
+                <button id="submit">Submit</button>
+                <button id="next">Next</button>
+            </div>
+        </div>
+    </main>
+    <script type="importmap">
+        {
+            "imports": {
+                "@google/generative-ai": "https://esm.run/@google/generative-ai"
+            }
+        }
+    </script>
+    <script type="module">
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+
+        const API_KEY = "AIzaSyCBj6EUX-b-91O3YPZEPgYrlkJgzF129l4";
+        const genAI = new GoogleGenerativeAI(API_KEY);
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+        window.model = model;
+    </script>
+    <script src="script.js" type="module"></script>
+</body>
+</html>
